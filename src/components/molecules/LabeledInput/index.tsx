@@ -8,11 +8,21 @@ export const LabeledInput = ({
   id,
   type,
   placeholder,
+  name,
+  value,
+  onChange,
 }: LabeledInputProps) => {
   return (
     <div className="mb-6">
       <Label id={id} text={text} />
-      <Input type={type} placeholder={placeholder} />
+      <Input
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };

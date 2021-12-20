@@ -1,5 +1,5 @@
 export interface CardProps {
-  children: React.ReactChild;
+  children: React.ReactNode;
 }
 
 export const Card = ({ children }: CardProps) => {

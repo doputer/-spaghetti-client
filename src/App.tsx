@@ -1,4 +1,4 @@
-import { SignInPage } from 'pages/SignUpPage';
+import { SignInPage } from 'pages/SignInPage';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
