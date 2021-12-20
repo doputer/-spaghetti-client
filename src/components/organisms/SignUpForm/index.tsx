@@ -1,29 +1,41 @@
-import { Anchor } from 'components/atoms/Anchor';
 import { Button } from 'components/atoms/Button';
 import { Card } from 'components/atoms/Card';
 import { LabeledInput } from 'components/molecules/LabeledInput';
+import { Dispatch, SetStateAction } from 'react';
 
 interface Account {
+  nickname: string;
   email: string;
   password: string;
 }
 
-export interface SignInFormProps {
+export interface SignUpFormProps {
   account: Account;
+  repassword: string;
+  setRepassword: Dispatch<SetStateAction<string>>;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleClick: () => void;
-  handleEnter: (e: React.KeyboardEvent<HTMLDivElement>) => void;
 }
 
-export const SignInForm = ({
+export const SignUpForm = ({
   account,
+  repassword,
+  setRepassword,
   handleInput,
   handleClick,
-  handleEnter,
-}: SignInFormProps) => {
+}: SignUpFormProps) => {
   return (
-    <div className="w-1/5 min-w-fit h-fit" onKeyDown={handleEnter}>
+    <div className="w-1/5 min-w-fit h-fit">
       <Card>
+        <LabeledInput
+          text={'닉네임'}
+          id={'nickname'}
+          type={'text'}
+          placeholder={'나는 스파게티 코드가 싫어요'}
+          name={'nickname'}
+          value={account.nickname}
+          onChange={handleInput}
+        />
         <LabeledInput
           text={'이메일'}
           id={'email'}
@@ -41,10 +53,14 @@ export const SignInForm = ({
           value={account.password}
           onChange={handleInput}
         />
-        <Button onClick={handleClick}>{'로그인'}</Button>
-        <div className="mt-4">
-          <Anchor to="/signup" text="회원가입" />
-        </div>
+        <LabeledInput
+          text={'비밀번호 확인'}
+          id={'repassword'}
+          type={'password'}
+          value={repassword}
+          onChange={e => setRepassword(e.target.value)}
+        />
+        <Button onClick={handleClick}>{'회원가입'}</Button>
       </Card>
     </div>
   );

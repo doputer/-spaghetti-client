@@ -1,6 +1,6 @@
 export interface InputProps {
   id?: string;
-  type: 'email' | 'password';
+  type: 'text' | 'email' | 'password';
   name?: string;
   placeholder?: string;
   value: string;
