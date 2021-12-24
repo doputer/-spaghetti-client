@@ -1,6 +1,7 @@
+import { message } from 'antd';
 import { apiCreateUser } from 'apis/userApi';
-import { SignUpForm } from 'components/organisms/SignUpForm';
-import { Content } from 'components/templates/Content';
+import { Cover } from 'components/common/Cover';
+import { SignUp } from 'components/SignUp';
 import { useAsync } from 'hooks/useAsync';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -17,9 +18,13 @@ export const SignUpPage = () => {
   });
   const [repassword, setRepassword] = useState('');
 
+  const handleTo = () => navigate('/');
+
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-    setAccount({ ...account, [name]: value });
+
+    if (name === 'repassword') setRepassword(value);
+    else setAccount({ ...account, [name]: value });
   };
 
   const handleClick = async () => {
@@ -37,18 +42,23 @@ export const SignUpPage = () => {
   };
 
   useEffect(() => {
-    if (error) alert(error);
+    if (error) message.error(error, 0.5);
   }, [error]);
 
   return (
-    <Content>
-      <SignUpForm
-        account={account}
-        repassword={repassword}
-        setRepassword={setRepassword}
+    <Cover
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+      animation={true}
+    >
+      <SignUp
         handleInput={handleInput}
         handleClick={handleClick}
+        handleTo={handleTo}
       />
-    </Content>
+    </Cover>
   );
 };

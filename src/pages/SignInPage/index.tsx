@@ -1,6 +1,7 @@
+import { message } from 'antd';
 import { apiLogin } from 'apis/authApi';
-import { SignInForm } from 'components/organisms/SignInForm';
-import { Content } from 'components/templates/Content';
+import { Cover } from 'components/common/Cover';
+import { SignIn } from 'components/SignIn';
 import { useAsync } from 'hooks/useAsync';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +16,8 @@ export const SignInPage = () => {
     email: '',
     password: '',
   });
+
+  const handleTo = () => navigate('/signup');
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -45,22 +48,29 @@ export const SignInPage = () => {
         sameSite: 'none',
       });
 
-      navigate('/spaghetti');
+      navigate('/lobby');
     }
   }, [tokens]);
 
   useEffect(() => {
-    if (error) alert(error);
+    if (error) message.error(error, 0.5);
   }, [error]);
 
   return (
-    <Content>
-      <SignInForm
-        account={account}
+    <Cover
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+      animation={true}
+    >
+      <SignIn
         handleInput={handleInput}
         handleClick={handleClick}
         handleEnter={handleEnter}
+        handleTo={handleTo}
       />
-    </Content>
+    </Cover>
   );
 };

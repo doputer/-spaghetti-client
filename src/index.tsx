@@ -1,4 +1,5 @@
-import './index.css';
+import 'antd/dist/antd.css';
+import 'assets/styles/shared.scss';
 
 import App from 'App';
 import React from 'react';
