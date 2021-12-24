@@ -9,7 +9,7 @@ interface CardProps {
 export const Card = ({ className, children, onKeyPress }: CardProps) => {
   return (
     <div
-      className={`card flex flex-column ${className}`}
+      className={`card flex flex-column flex-center ${className}`}
       onKeyPress={onKeyPress}
     >
       {children}

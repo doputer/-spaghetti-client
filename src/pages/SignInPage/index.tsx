@@ -1,6 +1,5 @@
 import { message } from 'antd';
 import { apiLogin } from 'apis/authApi';
-import { Cover } from 'components/common/Cover';
 import { SignIn } from 'components/SignIn';
 import { useAsync } from 'hooks/useAsync';
 import { useEffect, useState } from 'react';
@@ -57,20 +56,11 @@ export const SignInPage = () => {
   }, [error]);
 
   return (
-    <Cover
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-      animation={true}
-    >
-      <SignIn
-        handleInput={handleInput}
-        handleClick={handleClick}
-        handleEnter={handleEnter}
-        handleTo={handleTo}
-      />
-    </Cover>
+    <SignIn
+      handleInput={handleInput}
+      handleClick={handleClick}
+      handleEnter={handleEnter}
+      handleTo={handleTo}
+    />
   );
 };

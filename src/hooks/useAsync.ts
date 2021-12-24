@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useReducer } from 'react';
+import { wait } from 'utils/wait';
 
 const initialState = { loading: false, data: null, error: false };
 
@@ -38,6 +39,8 @@ export const useAsync = (
   const execute = useCallback(
     async (...args: any) => {
       dispatch({ type: 'LOADING' });
+
+      wait(1000);
 
       try {
         const data = await callback(...args);
