@@ -12,7 +12,7 @@ function App() {
         <Route path="" element={<SignInPage />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="lobby" element={<LobbyPage />} />
-        <Route path="match/*" element={<MatchPage />} />
+        <Route path="match/:id" element={<MatchPage />} />
       </Route>
     </Routes>
   );

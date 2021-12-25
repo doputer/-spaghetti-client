@@ -1,14 +1,16 @@
 import './index.scss';
 
-import { useState } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/python/python');
 
-export const Editor = () => {
-  const [code, setCode] = useState('');
+interface EditorProps {
+  code: string;
+  setCode: (value: string) => void;
+}
 
+export const Editor = ({ code, setCode }: EditorProps) => {
   return (
     <div className="editor">
       <CodeMirror

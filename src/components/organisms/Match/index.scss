@@ -3,13 +3,35 @@
     flex: 1;
   }
 
-  .match-item:nth-child(1) {
+  .item-left {
     min-width: 320px;
   }
 
-  .execute-button {
+  .item-right {
     background-color: transparent;
+    padding: 0px;
+    gap: 0px;
+
+    .timer {
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    width: 100%;
+    text-align: right;
+
+    .execute-button {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .result {
+    background-color: #263238;
     border: none;
-    box-shadow: none;
+    border-radius: 8px;
+    resize: none;
   }
 }

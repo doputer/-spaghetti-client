@@ -5,14 +5,15 @@ import { Spinner } from 'components/atoms/Spinner';
 import { Lobby } from 'components/organisms/Lobby';
 import { useAsync } from 'hooks/useAsync';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useStopwatch } from 'react-timer-hook';
-import { io } from 'socket.io-client';
-
-const socket = io(`${process.env.REACT_APP_SOCKET_BASE_URL}/queue`, {
-  transports: ['websocket'],
-});
+import { io, Socket } from 'socket.io-client';
 
 export const LobbyPage = () => {
+  const navigate = useNavigate();
+
+  const [socket, setSocket] = useState<Socket>();
+
   const { data: payload, error } = useAsync(apiPayload, true);
   const { data: user, execute: getUser } = useAsync(apiGetUser);
 
@@ -23,19 +24,29 @@ export const LobbyPage = () => {
   const [connections, setConnections] = useState(0);
 
   useEffect(() => {
-    socket.on('message', data => {
+    setSocket(
+      io(`${process.env.REACT_APP_SOCKET_BASE_URL}/queue`, {
+        transports: ['websocket'],
+      }),
+    );
+  }, []);
+
+  useEffect(() => {
+    socket?.on('message', data => {
       console.log(data);
 
-      if (data.connections) setConnections(data.connections);
+      if (data.connections) setConnections(() => data.connections);
     });
-    socket.on('match', data => {
-      console.log(data);
 
+    socket?.on('match', data => {
       pause();
 
-      message.info('매치를 찾았습니다! 잠시후 경기가 시작됩니다.', 3);
+      message.info('매치를 찾았습니다! 잠시후 경기가 시작됩니다.', 1, () => {
+        socket.disconnect();
+        navigate(`/match/${data}`);
+      });
     });
-  }, []);
+  }, [socket]);
 
   useEffect(() => {
     if (error) message.error(error, 0.5);
@@ -46,7 +57,7 @@ export const LobbyPage = () => {
   }, [payload]);
 
   const addQueue = () => {
-    socket.emit('addQueue', {
+    socket?.emit('addQueue', {
       id: user._id,
       mmr: user.mmr,
     });
