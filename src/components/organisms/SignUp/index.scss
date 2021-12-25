@@ -1,0 +1,19 @@
+.signup {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+
+  .signup-button {
+    background-color: #c84b31;
+    border: none;
+    width: 100%;
+  }
+
+  .backward-button {
+    width: 100%;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.signin {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+
+  .signin-button {
+    width: 100%;
+    background-color: #c84b31;
+    border: none;
+  }
+
+  .signup-button {
+    width: 100%;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}

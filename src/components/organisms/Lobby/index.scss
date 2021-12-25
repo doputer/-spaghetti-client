@@ -1,0 +1,13 @@
+.lobby {
+  min-width: 320px;
+
+  .play-button {
+    width: 100%;
+    background-color: #c84b31;
+    border: none;
+
+    &.ant-btn-primary[disabled] {
+      background-color: #e5e5e5;
+    }
+  }
+}
