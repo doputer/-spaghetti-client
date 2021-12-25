@@ -12,9 +12,19 @@ interface IUser {
 }
 interface LobbyProps {
   user: IUser;
+  connections: number;
+  seconds: number;
+  isRunning: boolean;
+  addQueue: () => void;
 }
 
-export const Lobby = ({ user }: LobbyProps) => {
+export const Lobby = ({
+  user,
+  connections,
+  seconds,
+  isRunning,
+  addQueue,
+}: LobbyProps) => {
   return (
     <Card className="lobby">
       <Avatar
@@ -53,10 +63,16 @@ export const Lobby = ({ user }: LobbyProps) => {
         }}
       >
         <Statistic value={user?.mmr} title="MMR" prefix={<CrownFilled />} />
-        <Statistic value={128} title="PLAYERS" prefix={<ApiFilled />} />
+        <Statistic value={connections} title="PLAYERS" prefix={<ApiFilled />} />
       </Space>
-      <Button type="primary" size="large" className="play-button">
-        플레이
+      <Button
+        onClick={() => addQueue()}
+        type="primary"
+        size="large"
+        className="play-button"
+        disabled={isRunning}
+      >
+        {isRunning ? `${seconds}s` : 'Play'}
       </Button>
     </Card>
   );
