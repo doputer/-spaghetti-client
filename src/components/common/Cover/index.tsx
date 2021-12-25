@@ -16,12 +16,8 @@ interface CoverProps {
 export const Cover = ({ style, animation, children }: CoverProps) => {
   return (
     <div
-      className={`${animation ? 'cover-animation' : ''}`}
-      style={{
-        ...style,
-        width: '100vw',
-        height: '100vh',
-      }}
+      className={`cover ${animation ? 'cover-animation' : ''}`}
+      style={style}
     >
       {children}
     </div>

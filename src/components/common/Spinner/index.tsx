@@ -4,14 +4,18 @@ import { Spin } from 'antd';
 
 import { LoadingOutlined } from '@ant-design/icons';
 
-interface SpinnerProps {
-  size: number;
+interface SpinnerStyles {
+  fontSize?: string;
 }
 
-export const Spinner = ({ size }: SpinnerProps) => {
+interface SpinnerProps {
+  style?: SpinnerStyles;
+}
+
+export const Spinner = ({ style }: SpinnerProps) => {
   return (
     <div className="spinner flex flex-center">
-      <Spin indicator={<LoadingOutlined style={{ fontSize: size }} spin />} />
+      <Spin indicator={<LoadingOutlined style={style} spin />} />
     </div>
   );
 };

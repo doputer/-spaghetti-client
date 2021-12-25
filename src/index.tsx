@@ -1,4 +1,3 @@
-import 'antd/dist/antd.css';
 import 'assets/styles/shared.scss';
 
 import App from 'App';

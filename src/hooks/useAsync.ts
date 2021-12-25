@@ -40,7 +40,7 @@ export const useAsync = (
     async (...args: any) => {
       dispatch({ type: 'LOADING' });
 
-      wait(1000);
+      await wait(1000);
 
       try {
         const data = await callback(...args);

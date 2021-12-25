@@ -1,11 +1,22 @@
-import { Avatar, Divider, Space, Statistic } from 'antd';
+import './index.scss';
+
+import { Avatar, Button, Divider, Space, Statistic } from 'antd';
 import { Card } from 'components/common/Card';
+import { Name } from 'components/Name';
 
-import { AntDesignOutlined, ApiFilled, CrownFilled } from '@ant-design/icons';
+import { ApiFilled, CrownFilled } from '@ant-design/icons';
 
-export const Lobby = () => {
+interface IUser {
+  nickname: string;
+  mmr: number;
+}
+interface LobbyProps {
+  user: IUser;
+}
+
+export const Lobby = ({ user }: LobbyProps) => {
   return (
-    <Card>
+    <Card className="lobby">
       <Avatar
         size={{
           xs: 24,
@@ -15,13 +26,38 @@ export const Lobby = () => {
           xl: 80,
           xxl: 100,
         }}
-        icon={<AntDesignOutlined />}
+        src="/assets/images/pasta.png"
       />
-      <h1>{`김도현`}</h1>
-      <Space split={<Divider type="vertical" />}>
-        <Statistic title="MMR" value={1128} prefix={<CrownFilled />} />
-        <Statistic title="PLAYERS" value={1128} prefix={<ApiFilled />} />
+      <Name
+        style={{
+          margin: '0px',
+          fontSize: '24px',
+          fontWeight: 'bold',
+        }}
+      >
+        {user?.nickname}
+      </Name>
+      <Space
+        split={
+          <Divider
+            type="vertical"
+            style={{
+              backgroundColor: '#e5e5e5',
+            }}
+          />
+        }
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
+        }}
+      >
+        <Statistic value={user?.mmr} title="MMR" prefix={<CrownFilled />} />
+        <Statistic value={128} title="PLAYERS" prefix={<ApiFilled />} />
       </Space>
+      <Button type="primary" size="large" className="play-button">
+        플레이
+      </Button>
     </Card>
   );
 };
