@@ -1,26 +1,25 @@
 import './index.scss';
 
 import { Button, Input } from 'antd';
-import { Card } from 'components/common/Card';
+import { Card } from 'components/atoms/Card';
 
-import { EditOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
-interface SignUpProps {
+interface SignInProps {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleClick: () => void;
+  handleEnter: (e: React.KeyboardEvent<HTMLDivElement>) => void;
   handleTo: () => void;
 }
 
-export const SignUp = ({ handleInput, handleClick, handleTo }: SignUpProps) => {
+export const SignIn = ({
+  handleInput,
+  handleClick,
+  handleEnter,
+  handleTo,
+}: SignInProps) => {
   return (
-    <Card className="signup">
-      <Input
-        onInput={handleInput}
-        prefix={<EditOutlined />}
-        name="nickname"
-        placeholder="닉네임"
-        size="large"
-      />
+    <Card className="signin" onKeyPress={handleEnter}>
       <Input
         onInput={handleInput}
         prefix={<UserOutlined />}
@@ -36,29 +35,21 @@ export const SignUp = ({ handleInput, handleClick, handleTo }: SignUpProps) => {
         placeholder="비밀번호"
         size="large"
       />
-      <Input
-        onInput={handleInput}
-        prefix={<LockOutlined />}
-        type="password"
-        name="repassword"
-        placeholder="비밀번호 확인"
-        size="large"
-      />
       <Button
         onClick={handleClick}
         type="primary"
         size="large"
-        className="signup-button"
+        className="signin-button"
       >
-        회원가입
+        로그인
       </Button>
       <Button
         onClick={handleTo}
         type="text"
         size="large"
-        className="backward-button"
+        className="signup-button"
       >
-        뒤로가기
+        회원가입
       </Button>
     </Card>
   );

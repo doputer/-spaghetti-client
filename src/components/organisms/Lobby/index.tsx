@@ -1,8 +1,8 @@
 import './index.scss';
 
 import { Avatar, Button, Divider, Space, Statistic } from 'antd';
-import { Card } from 'components/common/Card';
-import { Name } from 'components/Name';
+import { Card } from 'components/atoms/Card';
+import { Title } from 'components/atoms/Title';
 
 import { ApiFilled, CrownFilled } from '@ant-design/icons';
 
@@ -31,7 +31,7 @@ export const Lobby = ({ user, connections, seconds, addQueue }: LobbyProps) => {
         }}
         src="/assets/images/pasta.png"
       />
-      <Name
+      <Title
         style={{
           margin: '0px',
           fontSize: '24px',
@@ -39,7 +39,7 @@ export const Lobby = ({ user, connections, seconds, addQueue }: LobbyProps) => {
         }}
       >
         {user?.nickname}
-      </Name>
+      </Title>
       <Space
         split={
           <Divider

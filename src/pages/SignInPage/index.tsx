@@ -1,6 +1,6 @@
 import { message } from 'antd';
 import { apiLogin } from 'apis/authApi';
-import { SignIn } from 'components/SignIn';
+import { SignIn } from 'components/organisms/SignIn';
 import { useAsync } from 'hooks/useAsync';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

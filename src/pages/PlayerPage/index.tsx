@@ -1,4 +1,4 @@
-import { Cover } from 'components/common/Cover';
+import { Cover } from 'components/templates/Cover';
 import { Outlet } from 'react-router-dom';
 
 export const PlayerPage = () => {

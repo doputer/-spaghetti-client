@@ -1,6 +1,6 @@
 import { message } from 'antd';
 import { apiCreateUser } from 'apis/userApi';
-import { SignUp } from 'components/SignUp';
+import { SignUp } from 'components/organisms/SignUp';
 import { useAsync } from 'hooks/useAsync';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

@@ -1,4 +1,5 @@
 import { LobbyPage } from 'pages/LobbyPage';
+import { MatchPage } from 'pages/MatchPage';
 import { PlayerPage } from 'pages/PlayerPage';
 import { SignInPage } from 'pages/SignInPage';
 import { SignUpPage } from 'pages/SignUpPage';
@@ -11,6 +12,7 @@ function App() {
         <Route path="" element={<SignInPage />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="lobby" element={<LobbyPage />} />
+        <Route path="match/*" element={<MatchPage />} />
       </Route>
     </Routes>
   );

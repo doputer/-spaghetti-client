@@ -1,14 +1,14 @@
 import { message } from 'antd';
 import { apiPayload } from 'apis/authApi';
 import { apiGetUser } from 'apis/userApi';
-import { Spinner } from 'components/common/Spinner';
-import { Lobby } from 'components/Lobby';
+import { Spinner } from 'components/atoms/Spinner';
+import { Lobby } from 'components/organisms/Lobby';
 import { useAsync } from 'hooks/useAsync';
 import { useEffect, useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
 import { io } from 'socket.io-client';
 
-const socket = io(`${process.env.REACT_APP_SOCKET_BASE_URL}/queues`, {
+const socket = io(`${process.env.REACT_APP_SOCKET_BASE_URL}/queue`, {
   transports: ['websocket'],
 });
 

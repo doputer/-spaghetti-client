@@ -1,0 +1,15 @@
+.match {
+  .ant-space-item {
+    flex: 1;
+  }
+
+  .match-item:nth-child(1) {
+    min-width: 320px;
+  }
+
+  .execute-button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}

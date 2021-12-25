@@ -1,14 +1,14 @@
-interface NameStyles {
+interface TitleStyles {
   margin?: string;
   fontSize?: string;
   fontWeight?: string;
 }
 
-interface NameProps {
-  style?: NameStyles;
+interface TitleProps {
+  style?: TitleStyles;
   children: React.ReactNode;
 }
 
-export const Name = ({ style, children }: NameProps) => {
+export const Title = ({ style, children }: TitleProps) => {
   return <p style={style}>{children}</p>;
 };
