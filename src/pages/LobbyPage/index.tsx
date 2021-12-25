@@ -16,7 +16,9 @@ export const LobbyPage = () => {
   const { data: payload, error } = useAsync(apiPayload, true);
   const { data: user, execute: getUser } = useAsync(apiGetUser);
 
-  const { seconds, isRunning, start } = useStopwatch({ autoStart: false });
+  const { seconds, start, pause } = useStopwatch({
+    autoStart: false,
+  });
 
   const [connections, setConnections] = useState(0);
 
@@ -26,7 +28,13 @@ export const LobbyPage = () => {
 
       if (data.connections) setConnections(data.connections);
     });
-    socket.on('match', data => console.log(data));
+    socket.on('match', data => {
+      console.log(data);
+
+      pause();
+
+      message.info('매치를 찾았습니다! 잠시후 경기가 시작됩니다.', 3);
+    });
   }, []);
 
   useEffect(() => {
@@ -53,7 +61,6 @@ export const LobbyPage = () => {
       user={user}
       connections={connections}
       seconds={seconds}
-      isRunning={isRunning}
       addQueue={addQueue}
     />
   );

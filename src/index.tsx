@@ -1,3 +1,4 @@
+import 'assets/styles/common.scss';
 import 'assets/styles/shared.scss';
 
 import App from 'App';

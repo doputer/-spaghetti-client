@@ -14,17 +14,10 @@ interface LobbyProps {
   user: IUser;
   connections: number;
   seconds: number;
-  isRunning: boolean;
   addQueue: () => void;
 }
 
-export const Lobby = ({
-  user,
-  connections,
-  seconds,
-  isRunning,
-  addQueue,
-}: LobbyProps) => {
+export const Lobby = ({ user, connections, seconds, addQueue }: LobbyProps) => {
   return (
     <Card className="lobby">
       <Avatar
@@ -42,7 +35,7 @@ export const Lobby = ({
         style={{
           margin: '0px',
           fontSize: '24px',
-          fontWeight: 'bold',
+          fontWeight: '700',
         }}
       >
         {user?.nickname}
@@ -70,9 +63,9 @@ export const Lobby = ({
         type="primary"
         size="large"
         className="play-button"
-        disabled={isRunning}
+        disabled={seconds > 0}
       >
-        {isRunning ? `${seconds}s` : 'Play'}
+        {seconds > 0 ? `${seconds}s` : 'Play'}
       </Button>
     </Card>
   );
