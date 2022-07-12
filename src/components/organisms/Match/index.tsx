@@ -1,63 +1,23 @@
 import './index.scss';
 
-import { Button, Input, Space } from 'antd';
-import { Card } from 'components/atoms/Card';
-import { Editor } from 'components/atoms/Editor';
-import { Problem } from 'components/molecules/Problem';
-
-import { ClockCircleFilled, PlayCircleFilled } from '@ant-design/icons';
-
-const { TextArea } = Input;
+import { LikeFilled, LikeOutlined } from '@ant-design/icons';
+import { useState } from 'react';
 
 interface MatchProps {
-  minutes: number;
-  seconds: number;
-  code: string;
-  setCode: (value: string) => void;
-  executeCode: () => void;
+  winMatch: () => void;
 }
 
-export const Match = ({
-  minutes,
-  seconds,
-  code,
-  setCode,
-  executeCode,
-}: MatchProps) => {
+export const Match = ({ winMatch }: MatchProps) => {
+  const [hover, setHover] = useState(false);
+
   return (
-    <Space
-      className="match"
-      wrap={true}
-      style={{
-        padding: '10px',
-      }}
+    <div
+      className="win-wrap"
+      onMouseOver={() => setHover(true)}
+      onMouseOut={() => setHover(false)}
     >
-      <Card className="item-left">
-        <Problem />
-      </Card>
-      <Card className="item-right">
-        <div className="timer">
-          <ClockCircleFilled
-            style={{
-              marginRight: '8px',
-            }}
-          />
-          {`${minutes} : ${seconds}`}
-        </div>
-        <Editor code={code} setCode={setCode} />
-        <div className="buttons">
-          <Button
-            onClick={() => executeCode()}
-            className="execute-button"
-            type="primary"
-            size="large"
-            icon={<PlayCircleFilled />}
-          >
-            실행
-          </Button>
-        </div>
-        <TextArea readOnly className="result" />
-      </Card>
-    </Space>
+      {!hover && <LikeOutlined className="win" />}
+      {hover && <LikeFilled className="win" onClick={() => winMatch()} />}
+    </div>
   );
 };

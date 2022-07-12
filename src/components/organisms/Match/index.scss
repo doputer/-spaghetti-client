@@ -1,37 +1,13 @@
-.match {
-  .ant-space-item {
-    flex: 1;
-  }
+.win-wrap {
+  box-shadow: 0px 1px 4px rgb(19 24 48 / 20%);
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
 
-  .item-left {
-    min-width: 320px;
-  }
-
-  .item-right {
-    background-color: transparent;
-    padding: 0px;
-    gap: 0px;
-
-    .timer {
-      width: 100%;
-    }
-  }
-
-  .buttons {
-    width: 100%;
-    text-align: right;
-
-    .execute-button {
-      background-color: transparent;
-      border: none;
-      box-shadow: none;
-    }
-  }
-
-  .result {
-    background-color: #263238;
-    border: none;
-    border-radius: 8px;
-    resize: none;
+  .win {
+    font-size: 72px;
   }
 }
